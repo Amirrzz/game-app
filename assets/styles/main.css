@@ -1,0 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+}
+.sizes {
+  --gap-size: 10px;
+  --row-size: calc(100vw - (var(--gap-size) * 2));
+  --cubes-per-row: 4;
+  --cube-size: calc(var(--row-size) / var(--cubes-per-row) - var(--gap-size));
+}
+.container {
+  background-color: white;
+  width: 100%;
+  min-height: 100vh;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: var(--gap-size);
+  border-top: 2px solid #212524;
+  border-bottom: 2px solid #212524;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-size);
+  flex-wrap: wrap;
+  width: var(--row-size);
+}
+.cube-item {
+  width: var(--cube-size);
+  height: var(--cube-size);
+  background-color: #dddddd;
+  border-radius: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100%;
+  font-weight: 500;
+  transition: 0.5s;
+  user-select: none;
+  opacity: 0.55;
+  position: relative;
+}
+.scaleInAnimation {
+  animation-name: scaleIn;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.scaleInOutAnimation {
+  animation-name: scaleInOut;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+@keyframes scaleInOut {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.cube-item.finishGamePass {
+  opacity: 1;
+  background-color: aqua;
+  pointer-events: none;
+}
